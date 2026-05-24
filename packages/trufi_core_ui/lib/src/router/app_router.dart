@@ -183,16 +183,11 @@ class AppShell extends StatelessWidget {
                   icon: const Icon(Icons.info_outline),
                   tooltip: 'About',
                   onPressed: () {
-                    // Navegar a la pantalla de About si existe
                     final aboutScreen = screens.firstWhere(
                       (s) => s.id == 'about',
                       orElse: () => screens.first,
                     );
-                    _navigateToDrawerSection(
-                      context,
-                      currentPath,
-                      aboutScreen.path,
-                    );
+                    _navigateToSection(context, aboutScreen.path);
                   },
                 ),
               ],
@@ -307,8 +302,8 @@ class AppDrawer extends StatelessWidget {
           title: screen.getLocalizedTitle(context),
           isSelected: currentPath == screen.path,
           onTap: () {
-            Navigator.pop(context);
-            _navigateToDrawerSection(context, currentPath, screen.path);
+            Scaffold.of(context).closeDrawer();
+            _navigateToSection(context, screen.path);
           },
         ),
       );
@@ -318,25 +313,28 @@ class AppDrawer extends StatelessWidget {
   }
 }
 
-void _navigateToDrawerSection(
-  BuildContext context,
-  String currentPath,
-  String path,
-) {
-  if (currentPath == path) {
-    return;
-  }
+/// Navigates to a top-level section, keeping `/` at the bottom of the stack
+/// so the system back button always returns to home.
+void _navigateToSection(BuildContext context, String path) {
+  final router = GoRouter.of(context);
+  final currentPath = router.routeInformationProvider.value.uri.path;
+
+  if (currentPath == path) return;
 
   if (currentPath == '/') {
-    context.push(path);
+    router.push(path);
     return;
   }
 
-  context.go('/');
+  if (router.canPop()) {
+    router.pushReplacement(path);
+    return;
+  }
+
+  // Deep-linked into a section; reset stack to [/, path].
+  router.go('/');
   WidgetsBinding.instance.addPostFrameCallback((_) {
-    if (context.mounted) {
-      context.push(path);
-    }
+    if (context.mounted) router.push(path);
   });
 }
 
