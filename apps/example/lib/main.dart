@@ -231,6 +231,20 @@ void main() {
           label: 'Instagram',
         ),
       ],
+      overlayManager: OverlayManager(
+        managers: [
+          OnboardingManager(
+            overlayBuilder: (onComplete) =>
+                OnboardingSheet(onComplete: onComplete),
+          ),
+          PrivacyConsentManager(
+            overlayBuilder: (onAccept, onDecline) => PrivacyConsentSheet(
+              onAccept: onAccept,
+              onDecline: onDecline,
+            ),
+          ),
+        ],
+      ),
       providers: [
         ChangeNotifierProvider(
           create: (_) => MapEngineManager(
@@ -240,22 +254,6 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => RoutingEngineManager(engines: _routingEngines),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => OverlayManager(
-            managers: [
-              OnboardingManager(
-                overlayBuilder: (onComplete) =>
-                    OnboardingSheet(onComplete: onComplete),
-              ),
-              PrivacyConsentManager(
-                overlayBuilder: (onAccept, onDecline) => PrivacyConsentSheet(
-                  onAccept: onAccept,
-                  onDecline: onDecline,
-                ),
-              ),
-            ],
-          ),
         ),
         BlocProvider(
           create: (_) => SearchLocationsCubit(

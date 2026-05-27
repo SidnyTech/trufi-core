@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:provider/single_child_widget.dart';
 
 import '../overlay/overlay_service.dart';
 
@@ -85,4 +86,8 @@ abstract class AppOverlayManager extends ChangeNotifier {
     // Default implementation does nothing.
     // Override in subclasses to push overlays or setup timers.
   }
+
+  /// Returns a SingleChildWidget that exposes this manager via Provider
+  /// with its concrete runtime type, so consumers can use `context.watch<T>()`.
+  SingleChildWidget asProvider();
 }

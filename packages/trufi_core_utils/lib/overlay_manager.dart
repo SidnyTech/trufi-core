@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:trufi_core_interfaces/trufi_core_interfaces.dart';
 
 /// Type of overlay display
@@ -239,4 +240,10 @@ class OverlayManager extends ChangeNotifier implements OverlayService {
       context.read<OverlayManager?>();
   static OverlayManager? maybeWatch(BuildContext context) =>
       context.watch<OverlayManager?>();
+
+  @override
+  List<SingleChildWidget> get providers => [
+    ChangeNotifierProvider<OverlayManager>.value(value: this),
+    ..._managers.map((m) => m.asProvider()),
+  ];
 }

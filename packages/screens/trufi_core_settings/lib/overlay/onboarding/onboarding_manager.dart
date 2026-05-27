@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trufi_core_interfaces/trufi_core_interfaces.dart';
 
@@ -90,4 +92,8 @@ class OnboardingManager extends AppOverlayManager {
     // Re-check if we need to show overlay
     _checkAndPushOverlay();
   }
+
+  @override
+  SingleChildWidget asProvider() =>
+      ChangeNotifierProvider<OnboardingManager>.value(value: this);
 }

@@ -859,11 +859,9 @@ class _PrivacySettingsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settingsL10n = SettingsLocalizations.of(context);
-    final overlayManager = OverlayManager.watch(context);
-    final privacyConsentManager = overlayManager
-        .getManager<PrivacyConsentManager>();
+    final privacyConsentManager = PrivacyConsentManager.maybeWatch(context);
 
-    // If no PrivacyConsentManager is available, don't show this card
+    // If no PrivacyConsentManager is registered, don't show this card
     if (privacyConsentManager == null) {
       return const SizedBox.shrink();
     }
@@ -880,7 +878,7 @@ class _PrivacySettingsCard extends StatelessWidget {
         onToggle: (value) {
           HapticFeedback.selectionClick();
           if (value) {
-            privacyConsentManager.acceptConsent();
+            privacyConsentManager.showConsentOverlay();
           } else {
             privacyConsentManager.declineConsent();
           }

@@ -133,6 +133,7 @@ class _TrufiAppState extends State<TrufiApp> {
         ChangeNotifierProvider.value(value: _localeManager),
         ChangeNotifierProvider.value(value: _themeManager),
         ChangeNotifierProvider.value(value: _sharedRouteNotifier),
+        ...?widget.config.overlayManager?.providers,
         ...widget.config.providers,
         ...screenProviders,
       ],

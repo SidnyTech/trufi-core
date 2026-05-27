@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trufi_core_interfaces/trufi_core_interfaces.dart';
 
@@ -113,6 +115,16 @@ class PrivacyConsentManager extends AppOverlayManager {
     notifyListeners();
   }
 
+  /// Re-shows the consent overlay regardless of whether it was previously shown.
+  void showConsentOverlay() {
+    if (overlayBuilder == null || _overlayService == null) return;
+    if (_overlayService!.hasOverlayWithId(_overlayId)) return;
+    _overlayService!.pushOverlay(
+      child: overlayBuilder!(_onAccept, _onDecline),
+      id: _overlayId,
+    );
+  }
+
   /// Resets consent state (useful for testing)
   Future<void> reset() async {
     final prefs = await SharedPreferences.getInstance();
@@ -123,4 +135,17 @@ class PrivacyConsentManager extends AppOverlayManager {
     notifyListeners();
     _pushOverlayIfNeeded();
   }
+
+  @override
+  SingleChildWidget asProvider() =>
+      ChangeNotifierProvider<PrivacyConsentManager>.value(value: this);
+
+  static PrivacyConsentManager watch(BuildContext context) =>
+      context.watch<PrivacyConsentManager>();
+  static PrivacyConsentManager read(BuildContext context) =>
+      context.read<PrivacyConsentManager>();
+  static PrivacyConsentManager? maybeWatch(BuildContext context) =>
+      context.watch<PrivacyConsentManager?>();
+  static PrivacyConsentManager? maybeRead(BuildContext context) =>
+      context.read<PrivacyConsentManager?>();
 }

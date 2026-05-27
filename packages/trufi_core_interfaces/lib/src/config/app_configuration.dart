@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' show TimeOfDay;
 import 'package:flutter/widgets.dart';
 import 'package:provider/single_child_widget.dart';
 
+import '../overlay/overlay_service.dart';
 import 'trufi_screen.dart';
 import 'trufi_theme_config.dart';
 import 'trufi_locale_config.dart';
@@ -85,13 +86,20 @@ class AppConfiguration {
   /// When set, shared routes will include a deep link URL that opens the app.
   final String? deepLinkScheme;
 
+  /// Optional overlay manager. When provided, it and all its child
+  /// AppOverlayManagers are auto-registered as Providers, so consumers
+  /// can use `context.watch<PrivacyConsentManager>()` etc. directly.
+  final OverlayService? overlayManager;
+
   /// Global providers that will be available to all screens.
   ///
   /// Use this to inject shared state managers:
   /// - MapEngineManager (required)
   /// - RoutingEngineManager (required)
-  /// - OverlayManager (required)
   /// - SearchLocationsCubit, POILayersCubit, etc.
+  ///
+  /// For overlay managers (privacy consent, onboarding, etc.), use the
+  /// dedicated [overlayManager] field instead.
   ///
   /// Example:
   /// ```dart
@@ -101,9 +109,6 @@ class AppConfiguration {
   ///   ),
   ///   ChangeNotifierProvider(
   ///     create: (_) => RoutingEngineManager(engines: [...]),
-  ///   ),
-  ///   ChangeNotifierProvider(
-  ///     create: (_) => OverlayManager(managers: [...]),
   ///   ),
   /// ]
   /// ```
@@ -161,6 +166,7 @@ class AppConfiguration {
     this.socialMediaLinks = const [],
     this.deepLinkScheme,
     this.defaultLocale,
+    this.overlayManager,
     this.providers = const [],
     this.initScreenBuilder,
     this.extraLocalizationsDelegates = const [],
