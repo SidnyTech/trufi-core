@@ -287,8 +287,14 @@ class _HomeScreenState extends State<HomeScreen>
     // navigated away (e.g. to /routes) would replace the current
     // location back to '/?from_lat=...&to_lat=...', yanking them
     // out of the screen they switched to.
-    final currentLocation = GoRouterState.of(context).matchedLocation;
-    if (currentLocation != '/') return;
+    //
+    // Use the router's actual current URL (not GoRouterState.of(context),
+    // which can return the route this widget was originally built under
+    // even after the user has navigated elsewhere within a ShellRoute).
+    final router = GoRouter.of(context);
+    final currentPath =
+        router.routeInformationProvider.value.uri.path;
+    if (currentPath != '/') return;
 
     final from = state.fromPlace;
     final to = state.toPlace;
