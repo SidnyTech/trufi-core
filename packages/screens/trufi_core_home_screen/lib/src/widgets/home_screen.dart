@@ -282,6 +282,14 @@ class _HomeScreenState extends State<HomeScreen>
   void _updateUrlWithState(RoutePlannerState state) {
     if (!kIsWeb) return;
 
+    // Only sync the URL while the user is actually on the home route.
+    // Without this guard, a plan that resolves after the user has
+    // navigated away (e.g. to /routes) would replace the current
+    // location back to '/?from_lat=...&to_lat=...', yanking them
+    // out of the screen they switched to.
+    final currentLocation = GoRouterState.of(context).matchedLocation;
+    if (currentLocation != '/') return;
+
     final from = state.fromPlace;
     final to = state.toPlace;
 
