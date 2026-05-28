@@ -471,11 +471,21 @@ class TrufiPlannerProvider extends IRoutingProvider {
   }
 
   Future<List<TransitRoute>> _fetchTransitRoutesRemote() async {
-    final routes = await _dataSource.client.getRoutes();
+    // Use the enriched endpoint that returns one entry per route plus
+    // its trip patterns and resolved agency name. When the backend is
+    // older and the response has no patterns, the loop below falls
+    // back to one TransitRoute per route — matching the legacy shape.
+    final richRoutes =
+        await (_dataSource.client as RemotePlannerClient).getRoutesWithPatterns();
 
-    final patterns = routes
-        .map(
-          (route) => TransitRoute(
+    final patterns = <TransitRoute>[];
+    for (final rich in richRoutes) {
+      final route = rich.route;
+
+      if (rich.patterns.isEmpty) {
+        // Backend hasn't been updated yet — keep the historical shape.
+        patterns.add(
+          TransitRoute(
             id: route.id,
             name: route.longName,
             code: route.id,
@@ -485,10 +495,41 @@ class TrufiPlannerProvider extends IRoutingProvider {
               mode: _routeTypeToMode(route.type),
               color: route.colorHex,
               textColor: route.textColorHex,
+              agencyName: rich.agencyName,
             ),
           ),
-        )
-        .toList();
+        );
+        continue;
+      }
+
+      // One TransitRoute per pattern, mirroring _fetchTransitRoutesLocal.
+      for (final p in rich.patterns) {
+        String? generatedLongName;
+        if (p.firstStop != null && p.lastStop != null) {
+          generatedLongName = '${p.firstStop} → ${p.lastStop}';
+        }
+        final effectiveLongName =
+            route.longName.isNotEmpty ? route.longName : generatedLongName;
+
+        final compositeId = '${route.id}#${p.id}';
+        patterns.add(
+          TransitRoute(
+            id: compositeId,
+            name: p.headsign ?? route.longName,
+            code: compositeId,
+            headsign: p.headsign,
+            route: TransitRouteInfo(
+              shortName: route.shortName,
+              longName: effectiveLongName,
+              mode: _routeTypeToMode(route.type),
+              color: route.colorHex,
+              textColor: route.textColorHex,
+              agencyName: rich.agencyName,
+            ),
+          ),
+        );
+      }
+    }
 
     patterns.sort(
       (a, b) => _compareRouteNames(

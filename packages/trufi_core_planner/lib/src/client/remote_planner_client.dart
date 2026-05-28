@@ -102,6 +102,37 @@ class RemotePlannerClient implements PlannerRoutingClient {
         .toList();
   }
 
+  /// Fetch routes along with their patterns and resolved agency name.
+  ///
+  /// Backends that haven't been updated yet still respond to /routes with
+  /// only the base GtfsRoute fields — in that case the returned entries
+  /// have an empty `patterns` list and `agencyName: null`, so callers can
+  /// gracefully fall back to one-entry-per-route behavior.
+  Future<List<RouteWithPatterns>> getRoutesWithPatterns() async {
+    final response = await _httpClient.get(
+      Uri.parse('$_baseUrl/routes'),
+      headers: await _buildHeaders(),
+    );
+    if (response.statusCode != 200) return [];
+
+    final data = jsonDecode(response.body) as Map<String, dynamic>;
+    final routes = data['routes'] as List;
+    return routes.map((raw) {
+      final r = raw as Map<String, dynamic>;
+      final route = GtfsRoute.fromJson(r);
+      final patternsJson = r['patterns'] as List? ?? const [];
+      final patterns = patternsJson
+          .map((p) =>
+              RemoteRoutePatternInfo.fromJson(p as Map<String, dynamic>))
+          .toList();
+      return RouteWithPatterns(
+        route: route,
+        agencyName: r['agencyName'] as String?,
+        patterns: patterns,
+      );
+    }).toList();
+  }
+
   @override
   Future<List<GtfsStop>> getStops({int? limit}) async {
     final uri = limit != null
@@ -205,4 +236,46 @@ class RemotePlannerClient implements PlannerRoutingClient {
   void close() {
     _httpClient.close();
   }
+}
+
+/// One pattern of a route as exposed by trufi-server-planner's /routes
+/// endpoint (after the agencyName/patterns enrichment).
+class RemoteRoutePatternInfo {
+  final int id;
+  final String? headsign;
+  final String? firstStop;
+  final String? lastStop;
+
+  const RemoteRoutePatternInfo({
+    required this.id,
+    this.headsign,
+    this.firstStop,
+    this.lastStop,
+  });
+
+  factory RemoteRoutePatternInfo.fromJson(Map<String, dynamic> json) {
+    return RemoteRoutePatternInfo(
+      id: (json['id'] as num).toInt(),
+      headsign: json['headsign'] as String?,
+      firstStop: json['firstStop'] as String?,
+      lastStop: json['lastStop'] as String?,
+    );
+  }
+}
+
+/// A route plus the extra metadata trufi-server-planner can attach
+/// when it has been updated: resolved agency name and per-route trip
+/// patterns. Older backends return entries with `patterns: []` and
+/// `agencyName: null`, which callers should treat as the legacy
+/// "one entry per route" mode.
+class RouteWithPatterns {
+  final GtfsRoute route;
+  final String? agencyName;
+  final List<RemoteRoutePatternInfo> patterns;
+
+  const RouteWithPatterns({
+    required this.route,
+    this.agencyName,
+    required this.patterns,
+  });
 }
