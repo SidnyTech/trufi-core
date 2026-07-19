@@ -59,4 +59,13 @@ class TransportListLocalizationsDe extends TransportListLocalizations {
 
   @override
   String get loadingRoute => 'Linie wird geladen...';
+
+  @override
+  String get mapSettingsTitle => 'Karteneinstellungen';
+
+  @override
+  String get mapTypeSectionTitle => 'Kartentyp';
+
+  @override
+  String get applyChangesButton => 'Änderungen anwenden';
 }

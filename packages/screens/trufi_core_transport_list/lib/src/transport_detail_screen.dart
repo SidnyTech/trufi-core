@@ -1952,9 +1952,9 @@ class _RouteMapViewState extends State<_RouteMapView> {
                       onEngineChanged: (engine) {
                         mapEngineManager.setEngine(engine);
                       },
-                      settingsAppBarTitle: Localizations.localeOf(context).languageCode == 'es' ? 'Configuración del mapa' : 'Map Settings',
-                      settingsSectionTitle: Localizations.localeOf(context).languageCode == 'es' ? 'Tipo de mapa' : 'Map Type',
-                      settingsApplyButtonText: Localizations.localeOf(context).languageCode == 'es' ? 'Aplicar cambios' : 'Apply Changes',
+                      settingsAppBarTitle: TransportListLocalizations.of(context).mapSettingsTitle,
+                      settingsSectionTitle: TransportListLocalizations.of(context).mapTypeSectionTitle,
+                      settingsApplyButtonText: TransportListLocalizations.of(context).applyChangesButton,
                     ),
                     const SizedBox(height: 8),
                   ],

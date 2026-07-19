@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:trufi_core_interfaces/trufi_core_interfaces.dart';
+import 'package:trufi_core_ui/src/l10n/core_localizations.dart';
 import 'package:trufi_core_utils/trufi_core_utils.dart'
     show PackageInfoPlatform;
 import 'package:url_launcher/url_launcher.dart';
@@ -626,9 +627,7 @@ class ErrorScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Localizations.localeOf(context).languageCode == 'es'
-              ? 'Error'
-              : 'Error',
+          CoreLocalizations.of(context).titleError,
         ),
       ),
       body: Center(
@@ -638,9 +637,7 @@ class ErrorScreen extends StatelessWidget {
             const Icon(Icons.error_outline, size: 64, color: Colors.red),
             const SizedBox(height: 16),
             Text(
-              Localizations.localeOf(context).languageCode == 'es'
-                  ? 'Página no encontrada'
-                  : 'Page not found',
+              CoreLocalizations.of(context).errorPageNotFound,
               style: TextStyle(fontSize: 24),
             ),
             const SizedBox(height: 8),
@@ -653,9 +650,7 @@ class ErrorScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () => context.go('/'),
               child: Text(
-                Localizations.localeOf(context).languageCode == 'es'
-                    ? 'Ir al inicio'
-                    : 'Go Home',
+                CoreLocalizations.of(context).actionGoHome,
               ),
             ),
           ],

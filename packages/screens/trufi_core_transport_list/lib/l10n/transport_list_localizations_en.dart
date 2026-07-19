@@ -65,4 +65,13 @@ class TransportListLocalizationsEn extends TransportListLocalizations {
 
   @override
   String get loadingRoute => 'Loading route...';
+
+  @override
+  String get mapSettingsTitle => 'Map Settings';
+
+  @override
+  String get mapTypeSectionTitle => 'Map Type';
+
+  @override
+  String get applyChangesButton => 'Apply Changes';
 }

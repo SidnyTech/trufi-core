@@ -198,6 +198,24 @@ abstract class TransportListLocalizations {
   /// In en, this message translates to:
   /// **'Loading route...'**
   String get loadingRoute;
+
+  /// No description provided for @mapSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Map Settings'**
+  String get mapSettingsTitle;
+
+  /// No description provided for @mapTypeSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Map Type'**
+  String get mapTypeSectionTitle;
+
+  /// No description provided for @applyChangesButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Changes'**
+  String get applyChangesButton;
 }
 
 class _TransportListLocalizationsDelegate
