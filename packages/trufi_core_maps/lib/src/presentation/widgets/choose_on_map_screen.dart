@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:latlong2/latlong.dart';
-
+import 'package:trufi_core_maps/l10n/maps_localizations.dart';
 import '../../configuration/map_engine/map_engine_manager.dart';
 import '../../configuration/map_engine/trufi_map_engine.dart';
 import '../../domain/entities/camera.dart';
@@ -264,7 +264,11 @@ class _ChooseOnMapScreenState extends State<ChooseOnMapScreen> {
                     );
                   },
                   icon: const Icon(Icons.check_rounded, size: 22),
-                  label: Text(widget.configuration.confirmButtonText == 'Confirm Location' ? MapsLocalizations.of(context).confirmLocation : widget.configuration.confirmButtonText),
+                  label: Text(
+                    widget.configuration.confirmButtonText == 'Confirm Location'
+                        ? MapsLocalizations.of(context).confirmLocation
+                        : widget.configuration.confirmButtonText,
+                  ),
                   style: FilledButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(

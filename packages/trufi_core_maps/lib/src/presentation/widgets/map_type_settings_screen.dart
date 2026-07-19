@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:trufi_core_maps/l10n/maps_localizations.dart';
 import 'map_type_option.dart';
 import 'map_selection_widgets.dart';
 
@@ -125,7 +125,9 @@ class _MapTypeSettingsScreenState extends State<MapTypeSettingsScreen>
             _buildAnimatedItem(
               index: 0,
               child: _MapSettingsHeader(
-                title: widget.appBarTitle ?? (MapsLocalizations.of(context).mapSettingsTitle),
+                title:
+                    widget.appBarTitle ??
+                    MapsLocalizations.of(context).mapSettingsTitle,
                 onClose: () => Navigator.of(context).pop(),
               ),
             ),
@@ -139,7 +141,9 @@ class _MapTypeSettingsScreenState extends State<MapTypeSettingsScreen>
                   _buildAnimatedItem(
                     index: 1,
                     child: _MapTypeHeroSection(
-                      title: widget.sectionTitle ?? MapsLocalizations.of(context).mapTypeSectionTitle,
+                      title:
+                          widget.sectionTitle ??
+                          MapsLocalizations.of(context).mapTypeSectionTitle,
                     ),
                   ),
 
