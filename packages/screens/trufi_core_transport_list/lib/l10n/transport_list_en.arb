@@ -38,5 +38,8 @@
   "labelStops": "Stops",
   "labelMode": "Mode",
   "noStopsAvailable": "No stops available",
-  "loadingRoute": "Loading route..."
+  "loadingRoute": "Loading route...",
+  "mapSettingsTitle": "Map Settings",
+  "mapTypeSectionTitle": "Map Type",
+  "applyChangesButton": "Apply Changes"
 }

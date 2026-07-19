@@ -180,29 +180,49 @@ final List<ITrufiMapEngine> _mapEngines = [
     ),
   ],
   // Online maps
-  const MapLibreEngine(
+  MapLibreEngine(
     engineId: 'osm_bright',
     styleString: 'https://maps.trufi.app/styles/osm-bright/style.json',
     displayName: 'OSM Bright',
-    displayDescription: 'Mapa claro',
+    descriptionBuilder: (context) =>
+        Localizations.localeOf(context).languageCode == 'es'
+        ? 'Mapa claro'
+        : Localizations.localeOf(context).languageCode == 'de'
+        ? 'Übersichtliche Karte'
+        : 'Light map',
   ),
-  const MapLibreEngine(
+  MapLibreEngine(
     engineId: 'osm_liberty',
     styleString: 'https://maps.trufi.app/styles/osm-liberty/style.json',
     displayName: 'OSM Liberty',
-    displayDescription: 'Mapa estándar',
+    descriptionBuilder: (context) =>
+        Localizations.localeOf(context).languageCode == 'es'
+        ? 'Mapa estándar'
+        : Localizations.localeOf(context).languageCode == 'de'
+        ? 'Standardkarte'
+        : 'Standard map',
   ),
-  const MapLibreEngine(
+  MapLibreEngine(
     engineId: 'dark_matter',
     styleString: 'https://maps.trufi.app/styles/dark-matter/style.json',
     displayName: 'Dark Matter',
-    displayDescription: 'Mapa oscuro',
+    descriptionBuilder: (context) =>
+        Localizations.localeOf(context).languageCode == 'es'
+        ? 'Mapa oscuro'
+        : Localizations.localeOf(context).languageCode == 'de'
+        ? 'Dunkle Karte'
+        : 'Dark map',
   ),
-  const MapLibreEngine(
+  MapLibreEngine(
     engineId: 'fiord_color',
     styleString: 'https://maps.trufi.app/styles/fiord-color/style.json',
     displayName: 'Fiord Color',
-    displayDescription: 'Mapa colorido',
+    descriptionBuilder: (context) =>
+        Localizations.localeOf(context).languageCode == 'es'
+        ? 'Mapa colorido'
+        : Localizations.localeOf(context).languageCode == 'de'
+        ? 'Bunke Karte'
+        : 'Color map',
   ),
 ];
 // ========================================
@@ -238,10 +258,8 @@ void main() {
                 OnboardingSheet(onComplete: onComplete),
           ),
           PrivacyConsentManager(
-            overlayBuilder: (onAccept, onDecline) => PrivacyConsentSheet(
-              onAccept: onAccept,
-              onDecline: onDecline,
-            ),
+            overlayBuilder: (onAccept, onDecline) =>
+                PrivacyConsentSheet(onAccept: onAccept, onDecline: onDecline),
           ),
         ],
       ),

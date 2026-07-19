@@ -29,5 +29,8 @@
   "labelStops": "Haltestellen",
   "labelMode": "Verkehrsmittel",
   "noStopsAvailable": "Keine Haltestellen verfügbar",
-  "loadingRoute": "Linie wird geladen..."
+  "loadingRoute": "Linie wird geladen...",
+  "mapSettingsTitle": "Karteneinstellungen",
+  "mapTypeSectionTitle": "Kartentyp",
+  "applyChangesButton": "Änderungen anwenden"
 }

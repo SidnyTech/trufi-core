@@ -1,0 +1,8 @@
+{
+  "@@locale": "de",
+  "mapSettingsTitle": "Karteneinstellungen",
+  "mapTypeSectionTitle": "Kartentyp",
+  "mapTypeDescription": "Wähle deinen bevorzugten Kartenstil",
+  "confirmLocation": "Standort bestätigen",
+  "changeMapType": "Kartentyp ändern"
+}

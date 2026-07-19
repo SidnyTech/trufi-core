@@ -29,5 +29,8 @@
   "labelStops": "Paradas",
   "labelMode": "Modo",
   "noStopsAvailable": "Sin paradas disponibles",
-  "loadingRoute": "Cargando ruta..."
+  "loadingRoute": "Cargando ruta...",
+  "mapSettingsTitle": "Configuración de mapa",
+  "mapTypeSectionTitle": "Tipo de mapa",
+  "applyChangesButton": "Aplicar cambios"
 }

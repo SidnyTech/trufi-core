@@ -1,0 +1,8 @@
+{
+  "@@locale": "en",
+  "mapSettingsTitle": "Map Settings",
+  "mapTypeSectionTitle": "Map Type",
+  "mapTypeDescription": "Choose your preferred map style",
+  "confirmLocation": "Confirm Location",
+  "changeMapType": "Change map type"
+}
