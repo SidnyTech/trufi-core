@@ -125,7 +125,7 @@ class _MapTypeSettingsScreenState extends State<MapTypeSettingsScreen>
             _buildAnimatedItem(
               index: 0,
               child: _MapSettingsHeader(
-                title: widget.appBarTitle ?? (Localizations.localeOf(context).languageCode == 'es' ? 'Configuración del mapa' : 'Map Settings'),
+                title: widget.appBarTitle ?? (MapsLocalizations.of(context).mapSettingsTitle),
                 onClose: () => Navigator.of(context).pop(),
               ),
             ),
@@ -139,7 +139,7 @@ class _MapTypeSettingsScreenState extends State<MapTypeSettingsScreen>
                   _buildAnimatedItem(
                     index: 1,
                     child: _MapTypeHeroSection(
-                      title: widget.sectionTitle ?? (Localizations.localeOf(context).languageCode == 'es' ? 'Tipo de mapa' : 'Map Type'),
+                      title: widget.sectionTitle ?? MapsLocalizations.of(context).mapTypeSectionTitle,
                     ),
                   ),
 
@@ -284,9 +284,7 @@ class _MapTypeHeroSection extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            Localizations.localeOf(context).languageCode == 'es'
-                ? 'Elige tu estilo de mapa preferido'
-                : 'Choose your preferred map style',
+            MapsLocalizations.of(context).mapTypeDescription,
             style: theme.textTheme.bodySmall?.copyWith(
               color: colorScheme.onSurfaceVariant,
             ),

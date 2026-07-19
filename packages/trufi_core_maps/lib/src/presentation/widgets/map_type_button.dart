@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trufi_core_maps/l10n/maps_localizations.dart';
 
 import '../../configuration/map_engine/trufi_map_engine.dart';
 import 'map_type_option.dart';
@@ -295,7 +296,9 @@ class _MapTypeButtonBase extends StatelessWidget {
       elevation: 4,
       borderRadius: BorderRadius.circular(borderRadius),
       child: Tooltip(
-        message: tooltip ?? (Localizations.localeOf(context).languageCode == 'es' ? 'Cambiar tipo de mapa' : 'Change map type'),
+        message:
+            tooltip ??
+            (MapsLocalizations.of(context).changeMapType),
         child: IconButton(
           iconSize: iconSize,
           icon: Icon(icon, color: effectiveIconColor),
