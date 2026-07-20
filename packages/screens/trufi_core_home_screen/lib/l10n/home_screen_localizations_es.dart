@@ -442,4 +442,13 @@ class HomeScreenLocalizationsEs extends HomeScreenLocalizations {
 
   @override
   String get liveVehiclesStateOff => 'Apagado';
+
+  @override
+  String get yourPlacesTitle => 'TUS LUGARES';
+
+  @override
+  String get searchResultsTitle => 'RESULTADOS DE BÚSQUEDA';
+
+  @override
+  String get noResultsText => 'No se encontraron resultados';
 }

@@ -442,4 +442,13 @@ class HomeScreenLocalizationsDe extends HomeScreenLocalizations {
 
   @override
   String get liveVehiclesStateOff => 'Aus';
+
+  @override
+  String get yourPlacesTitle => 'DEINE ORTE';
+
+  @override
+  String get searchResultsTitle => 'SUCHERGEBNISSE';
+
+  @override
+  String get noResultsText => 'Keine Ergebnisse gefunden';
 }

@@ -122,5 +122,9 @@
   "liveVehiclesSubtitle": "Zeige die Live-Position der Busse auf der Karte",
   "liveVehiclesEnable": "Aktivieren",
   "liveVehiclesStateOn": "Ein",
-  "liveVehiclesStateOff": "Aus"
+  "liveVehiclesStateOff": "Aus",
+  
+  "yourPlacesTitle": "DEINE ORTE",
+  "searchResultsTitle": "SUCHERGEBNISSE",
+  "noResultsText": "Keine Ergebnisse gefunden"
 }

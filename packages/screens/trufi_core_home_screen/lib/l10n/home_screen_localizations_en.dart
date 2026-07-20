@@ -441,4 +441,13 @@ class HomeScreenLocalizationsEn extends HomeScreenLocalizations {
 
   @override
   String get liveVehiclesStateOff => 'Off';
+
+  @override
+  String get yourPlacesTitle => 'YOUR PLACES';
+
+  @override
+  String get searchResultsTitle => 'SEARCH RESULTS';
+
+  @override
+  String get noResultsText => 'No results found';
 }

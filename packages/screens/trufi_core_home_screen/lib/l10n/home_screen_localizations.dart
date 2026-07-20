@@ -834,6 +834,24 @@ abstract class HomeScreenLocalizations {
   /// In en, this message translates to:
   /// **'Off'**
   String get liveVehiclesStateOff;
+
+  /// Section title above the list of saved/favorite places in location search
+  ///
+  /// In en, this message translates to:
+  /// **'YOUR PLACES'**
+  String get yourPlacesTitle;
+
+  /// Section title above search results in location search
+  ///
+  /// In en, this message translates to:
+  /// **'SEARCH RESULTS'**
+  String get searchResultsTitle;
+
+  /// Message shown when a location search returns no results
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get noResultsText;
 }
 
 class _HomeScreenLocalizationsDelegate

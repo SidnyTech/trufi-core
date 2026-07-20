@@ -29,13 +29,13 @@ import 'package:trufi_core_utils/trufi_core_utils.dart' show OverlayManager;
 // ============ CONFIGURATION ============
 const _photonUrl = 'https://photon.trufi.app';
 const _defaultCenter = LatLng(-17.3988354, -66.1626903);
-const _appName = 'Trufi Cochabamba';
+const _appName = 'Trufi App';
 const _deepLinkScheme = 'trufiapp';
 const _cityName = 'Cochabamba';
 const _countryName = 'Bolivia';
-const _emailContact = 'feedback@trufi.app';
-const _feedbackUrl = 'https://forms.gle/QMLhJT7N44Bh9zBN6';
-const _facebookUrl = 'https://www.facebook.com/trufiapp/';
+const _emailContact = 'info@trufi-association.org';
+const _feedbackUrl = 'https://www.trufi-association.org/feedback/';
+const _facebookUrl = 'https://facebook.com/trufiapp';
 const _instagramUrl = 'https://www.instagram.com/trufi.app';
 const _xTwitterUrl = 'https://x.com/trufiapp';
 
