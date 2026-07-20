@@ -60,6 +60,12 @@ abstract class IRoutingProvider {
   /// Description of this provider.
   String get description;
 
+  /// Localized description of this provider, when a [BuildContext] is
+  /// available. Providers that support multiple languages should
+  /// override this; the default falls back to [description] so existing
+  /// implementations (that only return a fixed string) keep working.
+  String descriptionFor(BuildContext context) => description;
+
   /// Whether this provider supports listing transit routes.
   bool get supportsTransitRoutes;
 
@@ -140,11 +146,11 @@ class RoutingProviderOption {
 /// Extension methods for IRoutingProvider.
 extension RoutingProviderExtension on IRoutingProvider {
   /// Converts this provider to a RoutingProviderOption for use in UI.
-  RoutingProviderOption toOption() {
+  RoutingProviderOption toOption([BuildContext? context]) {
     return RoutingProviderOption(
       id: id,
       name: name,
-      description: description,
+      description: context == null ? description : descriptionFor(context),
       requiresInternet: requiresInternet,
     );
   }
@@ -153,8 +159,8 @@ extension RoutingProviderExtension on IRoutingProvider {
 /// Extension to convert a list of providers to RoutingProviderOptions.
 extension RoutingProviderListExtension on List<IRoutingProvider> {
   /// Converts all providers to RoutingProviderOptions.
-  List<RoutingProviderOption> toOptions() {
-    return map((e) => e.toOption()).toList();
+  List<RoutingProviderOption> toOptions([BuildContext? context]) {
+    return map((e) => e.toOption(context)).toList();
   }
 
   /// Finds a provider by ID.

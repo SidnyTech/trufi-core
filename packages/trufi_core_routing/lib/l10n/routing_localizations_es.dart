@@ -68,4 +68,31 @@ class RoutingLocalizationsEs extends RoutingLocalizations {
 
   @override
   String get serviceTomorrow => 'mañana';
+
+  @override
+  String get trufiPlannerDescriptionLocal =>
+      'Funciona offline con datos GTFS empacados en la app';
+
+  @override
+  String get trufiPlannerDescriptionRemote =>
+      'Motor de rutas propio servido desde nuestro backend';
+
+  @override
+  String get trufiPlannerInfoTitle => 'Acerca de Trufi Planner';
+
+  @override
+  String get trufiPlannerInfoLocalLine1 =>
+      'Trufi Planner es nuestro motor de rutas propio (no OTP).';
+
+  @override
+  String get trufiPlannerInfoLocalLine2 =>
+      'En esta versión móvil corre 100% offline, usando los datos GTFS empacados con la app — por eso los resultados pueden diferir de motores online.';
+
+  @override
+  String get trufiPlannerInfoRemoteLine1 =>
+      'Trufi Planner es nuestro motor de rutas propio (no OTP).';
+
+  @override
+  String get trufiPlannerInfoRemoteLine2 =>
+      'Esta versión web consulta nuestro servidor; los resultados pueden diferir de OTP por usar un algoritmo y datos distintos.';
 }

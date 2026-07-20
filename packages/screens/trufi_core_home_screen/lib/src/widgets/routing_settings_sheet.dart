@@ -114,7 +114,12 @@ class RoutingSettingsSheet extends StatelessWidget {
           ),
           // Apply button
           Padding(
-            padding: EdgeInsets.fromLTRB(20, 8, 20, 24 + MediaQuery.of(context).padding.bottom),
+            padding: EdgeInsets.fromLTRB(
+              20,
+              8,
+              20,
+              24 + MediaQuery.of(context).padding.bottom,
+            ),
             child: SizedBox(
               width: double.infinity,
               child: FilledButton.icon(
@@ -304,7 +309,7 @@ class _EngineCard extends StatelessWidget {
 
     final isOffline = !engine.requiresInternet;
     final name = engine.name;
-    final description = engine.description;
+    final description = engine.descriptionFor(context);
 
     final limitations = <String>[];
     if (isOffline) {

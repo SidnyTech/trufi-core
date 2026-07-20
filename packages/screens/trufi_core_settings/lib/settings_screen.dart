@@ -446,7 +446,7 @@ class _RoutingSettingsCard extends StatelessWidget {
             ),
             child: _EngineOptionTile(
               name: engine.name,
-              description: engine.description,
+              description: engine.descriptionFor(context),
               icon: isOffline
                   ? Icons.offline_bolt_rounded
                   : Icons.cloud_rounded,

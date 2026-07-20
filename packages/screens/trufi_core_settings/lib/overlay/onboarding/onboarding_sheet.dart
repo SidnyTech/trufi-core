@@ -261,8 +261,11 @@ class _OnboardingLanguageSection extends StatelessWidget {
             if (i > 0) const SizedBox(height: 8),
             _LanguageOption(
               languageCode: locales[i].languageCode,
-              languageName: LocaleManager.displayNameForCode(locales[i].languageCode),
-              isSelected: localeManager.currentLocale.languageCode ==
+              languageName: LocaleManager.displayNameForCode(
+                locales[i].languageCode,
+              ),
+              isSelected:
+                  localeManager.currentLocale.languageCode ==
                   locales[i].languageCode,
               onSelect: () {
                 HapticFeedback.selectionClick();
@@ -459,7 +462,7 @@ class _OnboardingRoutingSection extends StatelessWidget {
             ),
             child: _EngineOption(
               name: engine.name,
-              description: engine.description,
+              description: engine.descriptionFor(context),
               icon: engine.requiresInternet
                   ? Icons.cloud_rounded
                   : Icons.offline_bolt_rounded,

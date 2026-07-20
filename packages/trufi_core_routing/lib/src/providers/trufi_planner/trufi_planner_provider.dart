@@ -16,6 +16,7 @@ import '../../models/service_hours.dart';
 import '../../models/stop.dart';
 import '../../models/transit_route.dart';
 import '../../models/transport_mode.dart';
+import 'package:trufi_core_routing/l10n/routing_localizations.dart';
 import '../routing_provider.dart';
 import 'package:trufi_core_planner/trufi_core_planner.dart';
 import 'trufi_planner_config.dart';
@@ -70,8 +71,17 @@ class TrufiPlannerProvider extends IRoutingProvider {
   String get description =>
       config.description ??
       (config.isLocal
-          ? 'Funciona offline con datos GTFS empacados en la app'
-          : 'Motor de rutas propio servido desde nuestro backend');
+          ? 'Works offline with GTFS data bundled in the app'
+          : 'Our own routing engine served from our backend');
+
+  @override
+  String descriptionFor(BuildContext context) {
+    if (config.description != null) return config.description!;
+    final l10n = RoutingLocalizations.of(context);
+    return config.isLocal
+        ? l10n.trufiPlannerDescriptionLocal
+        : l10n.trufiPlannerDescriptionRemote;
+  }
 
   @override
   bool get supportsTransitRoutes => true;
@@ -80,8 +90,19 @@ class TrufiPlannerProvider extends IRoutingProvider {
   bool get requiresInternet => config.isRemote;
 
   @override
-  Widget? buildPreferencesUI(BuildContext context) =>
-      _TrufiPlannerInfo(isLocal: config.isLocal);
+  Widget? buildPreferencesUI(BuildContext context) {
+    final l10n = RoutingLocalizations.of(context);
+    return _TrufiPlannerInfo(
+      isLocal: config.isLocal,
+      title: l10n.trufiPlannerInfoTitle,
+      lines: config.isLocal
+          ? [l10n.trufiPlannerInfoLocalLine1, l10n.trufiPlannerInfoLocalLine2]
+          : [
+              l10n.trufiPlannerInfoRemoteLine1,
+              l10n.trufiPlannerInfoRemoteLine2,
+            ],
+    );
+  }
 
   @override
   void resetPreferences() {}
@@ -737,23 +758,19 @@ class TrufiPlannerProvider extends IRoutingProvider {
 /// configurable preferences.
 class _TrufiPlannerInfo extends StatelessWidget {
   final bool isLocal;
+  final String title;
+  final List<String> lines;
 
-  const _TrufiPlannerInfo({required this.isLocal});
+  const _TrufiPlannerInfo({
+    required this.isLocal,
+    required this.title,
+    required this.lines,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-
-    final lines = isLocal
-        ? const [
-            'Trufi Planner es nuestro motor de rutas propio (no OTP).',
-            'En esta versión móvil corre 100% offline, usando los datos GTFS empacados con la app — por eso los resultados pueden diferir de motores online.',
-          ]
-        : const [
-            'Trufi Planner es nuestro motor de rutas propio (no OTP).',
-            'Esta versión web consulta nuestro servidor; los resultados pueden diferir de OTP por usar un algoritmo y datos distintos.',
-          ];
 
     return Container(
       padding: const EdgeInsets.all(20),
@@ -773,7 +790,7 @@ class _TrufiPlannerInfo extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                'Acerca de Trufi Planner',
+                title,
                 style: theme.textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),

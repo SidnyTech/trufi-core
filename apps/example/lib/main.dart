@@ -23,6 +23,7 @@ import 'package:trufi_core_search_locations/trufi_core_search_locations.dart';
 import 'package:trufi_core_settings/trufi_core_settings.dart';
 import 'package:trufi_core_transport_list/trufi_core_transport_list.dart';
 import 'package:trufi_core_ui/trufi_core_ui.dart';
+import 'package:trufi_core_maps/l10n/maps_localizations.dart';
 import 'package:trufi_core_utils/trufi_core_utils.dart' show OverlayManager;
 
 // ============ CONFIGURATION ============
@@ -233,6 +234,7 @@ void main() {
       appName: _appName,
       deepLinkScheme: _deepLinkScheme,
       defaultLocale: Locale('es'),
+      extraLocalizationsDelegates: [MapsLocalizations.delegate],
       themeConfig: const TrufiThemeConfig(),
       socialMediaLinks: [
         SocialMediaLink(

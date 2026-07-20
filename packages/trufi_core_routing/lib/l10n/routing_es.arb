@@ -17,5 +17,13 @@
   "serviceClosedOpensAt": "Cerrado · abre a las {time}",
   "serviceClosedOpensDayAt": "Cerrado · abre {day} a las {time}",
   "serviceClosed": "Cerrado",
-  "serviceTomorrow": "mañana"
+  "serviceTomorrow": "mañana",
+
+  "trufiPlannerDescriptionLocal": "Funciona offline con datos GTFS empacados en la app",
+  "trufiPlannerDescriptionRemote": "Motor de rutas propio servido desde nuestro backend",
+  "trufiPlannerInfoTitle": "Acerca de Trufi Planner",
+  "trufiPlannerInfoLocalLine1": "Trufi Planner es nuestro motor de rutas propio (no OTP).",
+  "trufiPlannerInfoLocalLine2": "En esta versión móvil corre 100% offline, usando los datos GTFS empacados con la app — por eso los resultados pueden diferir de motores online.",
+  "trufiPlannerInfoRemoteLine1": "Trufi Planner es nuestro motor de rutas propio (no OTP).",
+  "trufiPlannerInfoRemoteLine2": "Esta versión web consulta nuestro servidor; los resultados pueden diferir de OTP por usar un algoritmo y datos distintos."
 }
