@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:trufi_core_interfaces/trufi_core_interfaces.dart';
+import 'package:trufi_core_ui/trufi_core_ui.dart';
 
 /// Beautiful default initialization screen with animations.
 class DefaultInitScreen extends StatefulWidget {
@@ -88,11 +89,19 @@ class _DefaultInitScreenState extends State<DefaultInitScreen>
       return widget.stepTextBuilder!(step);
     }
     return switch (step) {
-      AppInitStep.starting => Localizations.localeOf(context).languageCode == 'es' ? 'Iniciando' : 'Starting',
-      AppInitStep.initializingOverlays => Localizations.localeOf(context).languageCode == 'es' ? 'Inicializando' : 'Initializing',
-      AppInitStep.loadingMaps => Localizations.localeOf(context).languageCode == 'es' ? 'Cargando mapas' : 'Loading maps',
-      AppInitStep.loadingRoutes => Localizations.localeOf(context).languageCode == 'es' ? 'Cargando rutas' : 'Loading routes',
-      AppInitStep.preparingScreens => 'Almost ready',
+      AppInitStep.starting => CoreLocalizations.of(context).appInitStepStarting,
+      AppInitStep.initializingOverlays => CoreLocalizations.of(
+        context,
+      ).appInitStepInitializingOverlays,
+      AppInitStep.loadingMaps => CoreLocalizations.of(
+        context,
+      ).appInitStepLoadingMaps,
+      AppInitStep.loadingRoutes => CoreLocalizations.of(
+        context,
+      ).appInitStepLoadingRoutes,
+      AppInitStep.preparingScreens => CoreLocalizations.of(
+        context,
+      ).appInitStepPreparingScreens,
     };
   }
 
@@ -265,7 +274,7 @@ class _DefaultInitScreenState extends State<DefaultInitScreen>
           child: Text(
             widget.currentStep != null
                 ? _stepToDisplayText(widget.currentStep!)
-                : Localizations.localeOf(context).languageCode == 'es' ? 'Cargando...' : 'Loading...',
+                : CoreLocalizations.of(context).appInitStepLoading,
             key: ValueKey(widget.currentStep),
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: colorScheme.onSurface.withValues(alpha: 0.8),
@@ -384,7 +393,7 @@ class _DefaultInitScreenState extends State<DefaultInitScreen>
 
         // Error title
         Text(
-          'Unable to start',
+          CoreLocalizations.of(context).appInitUnableToStart,
           style: Theme.of(
             context,
           ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
@@ -399,7 +408,7 @@ class _DefaultInitScreenState extends State<DefaultInitScreen>
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
-            widget.errorMessage ?? 'An unexpected error occurred',
+            CoreLocalizations.of(context).appInitUnexpectedError,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: colorScheme.onSurface.withValues(alpha: 0.8),
@@ -412,7 +421,7 @@ class _DefaultInitScreenState extends State<DefaultInitScreen>
         FilledButton.icon(
           onPressed: widget.onRetry,
           icon: const Icon(Icons.refresh_rounded),
-          label: Text(Localizations.localeOf(context).languageCode == 'es' ? 'Reintentar' : 'Try again'),
+          label: Text(CoreLocalizations.of(context).appInitRetryButtonLabel),
           style: FilledButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
             shape: RoundedRectangleBorder(

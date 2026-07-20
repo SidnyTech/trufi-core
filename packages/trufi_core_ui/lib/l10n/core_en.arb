@@ -100,5 +100,50 @@
   "markAllAsRead": "Mark all as read",
   "@markAllAsRead": {
     "description": "Button to mark all notifications as read"
+  },
+
+  "appInitStepStarting": "Starting",
+  "@appInitStepStarting": {
+    "description": "Init step label shown while the app is starting up"
+  },
+
+  "appInitStepInitializingOverlays": "Initializing",
+  "@appInitStepInitializingOverlays": {
+    "description": "Init step label shown while overlays (onboarding, privacy consent, etc.) are being set up"
+  },
+
+  "appInitStepLoadingMaps": "Loading maps",
+  "@appInitStepLoadingMaps": {
+    "description": "Init step label shown while map data is loading"
+  },
+
+  "appInitStepLoadingRoutes": "Loading routes",
+  "@appInitStepLoadingRoutes": {
+    "description": "Init step label shown while routing/transit data is loading"
+  },
+
+  "appInitStepPreparingScreens": "Almost ready",
+  "@appInitStepPreparingScreens": {
+    "description": "Init step label shown right before the app finishes loading"
+  },
+
+  "appInitStepLoading": "Loading",
+  "@appInitStepLoading": {
+    "description": "Generic fallback label shown while the app is loading, when no specific step is set"
+  },
+
+  "appInitUnableToStart": "Unable to start",
+  "@appInitUnableToStart": {
+    "description": "Title shown when app initialization fails"
+  },
+
+  "appInitUnexpectedError": "An unexpected error occurred",
+  "@appInitUnexpectedError": {
+    "description": "Fallback error message when no specific error is available"
+  },
+
+  "appInitRetryButtonLabel": "Try again",
+  "@appInitRetryButtonLabel": {
+    "description": "Label for the button that retries app initialization after a failure"
   }
 }

@@ -213,6 +213,60 @@ abstract class CoreLocalizations {
   /// In en, this message translates to:
   /// **'Mark all as read'**
   String get markAllAsRead;
+
+  /// Init step label shown while the app is starting up
+  ///
+  /// In en, this message translates to:
+  /// **'Starting'**
+  String get appInitStepStarting;
+
+  /// Init step label shown while overlays (onboarding, privacy consent, etc.) are being set up
+  ///
+  /// In en, this message translates to:
+  /// **'Initializing'**
+  String get appInitStepInitializingOverlays;
+
+  /// Init step label shown while map data is loading
+  ///
+  /// In en, this message translates to:
+  /// **'Loading maps'**
+  String get appInitStepLoadingMaps;
+
+  /// Init step label shown while routing/transit data is loading
+  ///
+  /// In en, this message translates to:
+  /// **'Loading routes'**
+  String get appInitStepLoadingRoutes;
+
+  /// Init step label shown right before the app finishes loading
+  ///
+  /// In en, this message translates to:
+  /// **'Almost ready'**
+  String get appInitStepPreparingScreens;
+
+  /// Generic fallback label shown while the app is loading, when no specific step is set
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get appInitStepLoading;
+
+  /// Title shown when app initialization fails
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to start'**
+  String get appInitUnableToStart;
+
+  /// Fallback error message when no specific error is available
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred'**
+  String get appInitUnexpectedError;
+
+  /// Label for the button that retries app initialization after a failure
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get appInitRetryButtonLabel;
 }
 
 class _CoreLocalizationsDelegate

@@ -66,4 +66,31 @@ class CoreLocalizationsEn extends CoreLocalizations {
 
   @override
   String get markAllAsRead => 'Mark all as read';
+
+  @override
+  String get appInitStepStarting => 'Starting';
+
+  @override
+  String get appInitStepInitializingOverlays => 'Initializing';
+
+  @override
+  String get appInitStepLoadingMaps => 'Loading maps';
+
+  @override
+  String get appInitStepLoadingRoutes => 'Loading routes';
+
+  @override
+  String get appInitStepPreparingScreens => 'Almost ready';
+
+  @override
+  String get appInitStepLoading => 'Loading';
+
+  @override
+  String get appInitUnableToStart => 'Unable to start';
+
+  @override
+  String get appInitUnexpectedError => 'An unexpected error occurred';
+
+  @override
+  String get appInitRetryButtonLabel => 'Try again';
 }

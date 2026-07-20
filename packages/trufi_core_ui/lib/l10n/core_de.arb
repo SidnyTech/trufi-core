@@ -19,5 +19,14 @@
   "actionGoHome": "Zur Startseite",
   "titleError": "Fehler",
   "unreadCount": "{count} ungelesen",
-  "markAllAsRead": "Alle als gelesen markieren"
+  "markAllAsRead": "Alle als gelesen markieren",
+  "appInitStepStarting": "Starten",
+  "appInitStepInitializingOverlays": "Overlays initialisieren",
+  "appInitStepLoadingMaps": "Karten laden",
+  "appInitStepLoadingRoutes": "Routen laden",
+  "appInitStepPreparingScreens": "Fast fertig",
+  "appInitUnableToStart": "Start nicht möglich",
+  "appInitUnexpectedError": "Ein unerwarteter Fehler ist aufgetreten",
+  "appInitStepLoading": "Laden",
+  "appInitRetryButtonLabel": "Wiederholen"
 }
