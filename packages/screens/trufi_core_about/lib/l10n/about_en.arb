@@ -65,5 +65,7 @@
   "volunteerTrufi": "Volunteer For Trufi",
   "@volunteerTrufi": {
     "description": "Link text to volunteer page"
-  }
+  },
+  "contactUs": "Contact",
+  "aboutContactUsSubtitle": "Send us feedback"
 }

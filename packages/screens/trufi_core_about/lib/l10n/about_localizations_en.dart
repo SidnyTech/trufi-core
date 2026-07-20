@@ -49,4 +49,10 @@ class AboutLocalizationsEn extends AboutLocalizations {
 
   @override
   String get volunteerTrufi => 'Volunteer For Trufi';
+
+  @override
+  String get contactUs => 'Contact';
+
+  @override
+  String get aboutContactUsSubtitle => 'Send us feedback';
 }

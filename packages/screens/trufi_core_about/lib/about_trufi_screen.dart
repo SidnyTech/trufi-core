@@ -330,9 +330,8 @@ class _AboutScrollContentState extends State<_AboutScrollContent>
               iconColor: Colors.deepPurple,
               title: 'GitHub',
               subtitle: 'trufi-association/trufi-core',
-              onTap: () => _openUrl(
-                'https://github.com/trufi-association/trufi-core',
-              ),
+              onTap: () =>
+                  _openUrl('https://github.com/trufi-association/trufi-core'),
             ),
           ],
         ),
@@ -342,12 +341,12 @@ class _AboutScrollContentState extends State<_AboutScrollContent>
       AboutSectionCard(
         icon: Icons.mail_rounded,
         iconColor: Colors.orange,
-        title: 'Contact',
+        title: localization.contactUs,
         child: AboutLinkTile(
           icon: Icons.email_rounded,
           iconColor: Colors.indigo,
           title: config.emailContact,
-          subtitle: 'Send us feedback',
+          subtitle: localization.aboutContactUsSubtitle,
           onTap: () => _openUrl(
             'mailto:${config.emailContact}?subject=${config.appName} Feedback',
           ),
@@ -463,18 +462,18 @@ class _AboutHeroCard extends StatelessWidget {
             child: config.logoWidget != null
                 ? config.logoWidget!
                 : config.logoAssetPath != null
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(22),
-                        child: Image.asset(
-                          config.logoAssetPath!,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : Icon(
-                        Icons.directions_bus_rounded,
-                        size: 44,
-                        color: colorScheme.onPrimaryContainer,
-                      ),
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(22),
+                    child: Image.asset(
+                      config.logoAssetPath!,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : Icon(
+                    Icons.directions_bus_rounded,
+                    size: 44,
+                    color: colorScheme.onPrimaryContainer,
+                  ),
           ),
           const SizedBox(height: 20),
           // App name

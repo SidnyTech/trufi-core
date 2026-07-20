@@ -75,7 +75,7 @@ class _Header extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  fare.title,
+                  fare.titleFor(context),
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: colorScheme.onSurface,
@@ -83,7 +83,7 @@ class _Header extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  fare.primary.label,
+                  fare.primary.labelFor(context),
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: colorScheme.onSurfaceVariant,
                   ),

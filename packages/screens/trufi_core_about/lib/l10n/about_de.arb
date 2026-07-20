@@ -8,7 +8,9 @@
   "aboutOpenSource": "Diese App ist als Open Source auf GitHub veröffentlicht. Wir freuen uns, wenn Du zum Code beiträgst oder eine App für Deine eigene Stadt entwickelst.",
   "menuAbout": "Über Uns",
   "tagline": "Öffentliche Verkehrsmittel in {city}",
-  "trufiWebsite": "Trufi Association Website",
+  "trufiWebsite": "Website der Trufi Association",
   "version": "Version {version}",
-  "volunteerTrufi": "Freiwilligenarbeit für Trufi"
+  "volunteerTrufi": "Freiwilligenarbeit für Trufi",
+  "contactUs": "Kontakt",
+  "aboutContactUsSubtitle": "Sende uns dein Feedback"
 }

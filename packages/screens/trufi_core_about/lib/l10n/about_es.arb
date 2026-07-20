@@ -10,5 +10,7 @@
   "tagline": "Transporte público en {city}",
   "trufiWebsite": "Sitio web de Trufi Association",
   "version": "Versión {version}",
-  "volunteerTrufi": "Voluntariados para Trufi"
+  "volunteerTrufi": "Voluntariados para Trufi",
+  "contactUs": "Contacto",
+  "aboutContactUsSubtitle": "Envíanos tus comentarios"
 }
